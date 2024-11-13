@@ -1,4 +1,6 @@
+require("dotenv").config();
 const express = require("express");
+const { mongoose } = require("mongoose");
 const app = express();
 
 app.get("/", (req, res) => {
@@ -7,4 +9,9 @@ app.get("/", (req, res) => {
   });
 });
 
-app.listen(3000);
+async function main() {
+  await mongoose.connect(process.env.MONGO_URL);
+  app.listen(process.env.PORT);
+}
+
+main();
