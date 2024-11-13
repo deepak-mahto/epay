@@ -1,17 +1,21 @@
 require("dotenv").config();
 const express = require("express");
 const { mongoose } = require("mongoose");
+const mainRouter = require("./routes");
 const app = express();
 
-app.get("/", (req, res) => {
-  res.json({
-    msg: "hello world",
-  });
-});
+app.use("/api/v1", mainRouter);
 
 async function main() {
-  await mongoose.connect(process.env.MONGO_URL);
-  app.listen(process.env.PORT);
+  try {
+    await mongoose.connect(process.env.MONGO_URL);
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.log("Error connection to MongoDB");
+  }
+  app.listen(() => {
+    console.log(`Server is running at ${process.env.PORT}`);
+  });
 }
 
 main();
