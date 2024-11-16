@@ -156,5 +156,5 @@ userRouter.get("/bulk", async (req, res) => {
 });
 
 module.exports = {
-  userRouter,
+  userRouter: userRouter,
 };
