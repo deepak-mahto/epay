@@ -14,7 +14,7 @@ accountRouter.get("/balance", authMiddleware, async (req, res) => {
   });
 });
 
-accountRouter.post("/transaction", async (req, res) => {
+accountRouter.post("/transfer", async (req, res) => {
   const session = await mongoose.startSession();
 
   session.startTransaction();
