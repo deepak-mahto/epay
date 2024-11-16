@@ -2,16 +2,16 @@ const { Router } = require("express");
 const { User, Account } = require("../db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const JWT_SECRET = require("../config");
-const zod = require("zod");
+const { JWT_SECRET } = require("../config");
+const { z } = require("zod");
 const { authMiddleware } = require("../middleware");
 const userRouter = Router();
 
-const signupBody = zod.object({
-  username: zod.string().email(),
-  firstName: zod.string(),
-  lastName: zod.string,
-  password: zod.string,
+const signupBody = z.object({
+  username: z.string().email(),
+  firstName: z.string(),
+  lastName: z.string(),
+  password: z.string(),
 });
 
 userRouter.post("/signup", async (req, res) => {
@@ -66,9 +66,9 @@ userRouter.post("/signup", async (req, res) => {
   });
 });
 
-const signinBody = zod.object({
-  username: zod.string().email(),
-  password: zod.string(),
+const signinBody = z.object({
+  username: z.string().email(),
+  password: z.string(),
 });
 
 userRouter.post("/signin", async (req, res) => {
@@ -107,10 +107,10 @@ userRouter.post("/signin", async (req, res) => {
   });
 });
 
-const updateBody = zod.object({
-  password: zod.string().optional(),
-  firstName: zod.string().optional(),
-  lastName: zod.string().optional(),
+const updateBody = z.object({
+  password: z.string().optional(),
+  firstName: z.string().optional(),
+  lastName: z.string().optional(),
 });
 
 userRouter.put("/", authMiddleware, async (req, res) => {
@@ -120,7 +120,7 @@ userRouter.put("/", authMiddleware, async (req, res) => {
     return res.status(411).json("Error while updating information");
   }
 
-  await User.updateOne({ _id: re.userId }, req.body);
+  await User.updateOne({ _id: req.userId }, req.body);
 
   res.json({
     message: "Updated successfully",
