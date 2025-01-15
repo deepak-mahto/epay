@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Appbar from "../components/Appbar";
 import Balance from "../components/Balance";
 import Users from "../components/Users";
+import axios from "axios";
 
 const Dashboard = () => {
+  const [userBalance, setUserBalance] = useState("");
+  useEffect(() => {
+    const getBalance = async () => {
+      const response = await axios.get(
+        "http://localhost:3000/api/v1/account/balance",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      setUserBalance(response.data.balance);
+    };
+    getBalance();
+  }, []);
+
   return (
     <div>
       <Appbar />
       <div className="m-8">
-        <Balance value={"10,000"} />
+        <Balance value={parseFloat(userBalance).toFixed(2)} />
         <Users />
       </div>
     </div>
