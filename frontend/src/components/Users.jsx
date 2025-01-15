@@ -20,24 +20,22 @@ const Users = () => {
   }, [debounceVal]);
 
   return (
-    <>
-      <div className="font-bold mt-6 text-lg">Users</div>
-      <div className="my-2">
+    <div className="mt-8">
+      <div className="font-bold text-2xl text-slate-800 mb-4">Users</div>
+      <div className="mb-6">
         <input
-          onChange={(e) => {
-            setFilter(e.target.value);
-          }}
+          onChange={(e) => setFilter(e.target.value)}
           type="text"
           placeholder="Search users..."
-          className="w-full px-2 py-1 border rounded border-slate-200"
+          className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500"
         />
       </div>
-      <div>
+      <div className="space-y-4">
         {users.map((user) => (
           <User key={user._id} user={user} />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
@@ -45,29 +43,25 @@ const User = ({ user }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex justify-between">
-      <div className="flex">
-        <div className="rounded-full h-12 w-12 bg-slate-200 flex justify-center mt-1 mr-2">
-          <div className="flex flex-col justify-center h-full text-xl">
+    <div className="flex justify-between items-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+      <div className="flex items-center space-x-4">
+        <div className="rounded-full h-12 w-12 bg-slate-200 flex items-center justify-center">
+          <div className="text-xl font-semibold text-slate-700">
             {user.firstName[0]}
           </div>
         </div>
-        <div className="flex flex-col justify-center h-full">
-          <div>
-            {user.firstName} {user.lastName}
-          </div>
+        <div className="text-slate-800 font-medium">
+          {user.firstName} {user.lastName}
         </div>
       </div>
-      <div className="flex flex-col justify-center h-full">
-        <Button
-          onClick={() => {
-            navigate(
-              `/send?id=${user._id}&name=${user.firstName} ${user.lastName}`
-            );
-          }}
-          label={"Send money"}
-        />
-      </div>
+      <Button
+        onClick={() => {
+          navigate(
+            `/send?id=${user._id}&name=${user.firstName} ${user.lastName}`
+          );
+        }}
+        label={"Send Money"}
+      />
     </div>
   );
 };

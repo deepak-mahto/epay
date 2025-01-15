@@ -9,7 +9,7 @@ const Dashboard = () => {
   return (
     <div>
       <Appbar />
-      <div className="m-8">
+      <div className="container mx-auto px-4 pt-20">
         <Balance value={parseFloat(userBalance).toFixed(2)} />
         <Users />
       </div>
