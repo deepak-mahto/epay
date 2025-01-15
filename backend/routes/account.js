@@ -8,10 +8,11 @@ const accountRouter = Router();
 accountRouter.get("/balance", authMiddleware, async (req, res) => {
   const account = await Account.findOne({
     userId: req.userId,
-  });
+  }).populate("userId", "firstName");
 
   res.json({
     balance: account.balance,
+    firstName: account.userId.firstName,
   });
 });
 
