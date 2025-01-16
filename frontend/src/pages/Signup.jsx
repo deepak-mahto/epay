@@ -6,14 +6,13 @@ import Button from "../components/Button";
 import BottomWarning from "../components/BottomWarning";
 import axios from "axios";
 import Appbar from "../components/Appbar";
-import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+
   return (
     <div className="bg-slate-100 h-screen flex justify-center items-center">
       <Appbar />
@@ -32,13 +31,14 @@ const Signup = () => {
         />
         <InputBox
           onChange={(e) => setUsername(e.target.value)}
-          placeholder={"johndoe01@gmail.com"}
+          placeholder={"deepak@gmail.com"}
           label={"Email"}
         />
         <InputBox
           onChange={(e) => setPassword(e.target.value)}
           placeholder={"123456"}
           label={"Password"}
+          type={"password"}
         />
         <div className="pt-4">
           <Button
@@ -53,7 +53,7 @@ const Signup = () => {
                 }
               );
               localStorage.setItem("token", response.data.token);
-              navigate("/dashboard");
+              window.location.href = "/dashboard";
             }}
             label={"Sign up"}
           />

@@ -26,11 +26,11 @@ function App() {
           />
           <Route
             path="/dashboard"
-            element={isLoggedIn ? <Dashboard /> : <Signup />}
+            element={isLoggedIn ? <Dashboard /> : <Signin />}
           />
           <Route
             path="/send"
-            element={isLoggedIn ? <SendMoney /> : <Signup />}
+            element={isLoggedIn ? <SendMoney /> : <Signin />}
           />
         </Routes>
       </BrowserRouter>
