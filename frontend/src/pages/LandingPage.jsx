@@ -20,8 +20,7 @@ const LandingPage = () => {
             Fast, Secure, and Easy Payments
           </h1>
           <p className="text-xl mb-8">
-            Send and receive money instantly with ePay. Join thousands of users
-            who trust us for seamless transactions.
+            Send and receive money instantly with ePay.
           </p>
           <div className="space-x-4">
             <Link
