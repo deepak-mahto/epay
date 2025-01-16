@@ -4,10 +4,8 @@ import Signin from "./pages/Signin";
 import Dashboard from "./pages/Dashboard";
 import SendMoney from "./pages/SendMoney";
 import LandingPage from "./pages/LandingPage";
-import useFetch from "./hooks/useFetch";
 
 function App() {
-  const { isLoggedIn } = useFetch();
   return (
     <>
       <BrowserRouter>
