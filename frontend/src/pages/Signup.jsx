@@ -5,6 +5,7 @@ import InputBox from "../components/InputBox";
 import Button from "../components/Button";
 import BottomWarning from "../components/BottomWarning";
 import axios from "axios";
+import Appbar from "../components/Appbar";
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
@@ -14,6 +15,7 @@ const Signup = () => {
 
   return (
     <div className="bg-slate-100 h-screen flex justify-center items-center">
+      <Appbar />
       <div className="rounded-lg bg-white w-96 text-center p-8 shadow-lg">
         <Heading label={"Sign up"} />
         <SubHeading label={"Enter your information to create an account"} />
@@ -50,6 +52,7 @@ const Signup = () => {
                 }
               );
               localStorage.setItem("token", response.data.token);
+              window.location.href = "/dashboard";
             }}
             label={"Sign up"}
           />

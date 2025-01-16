@@ -10,6 +10,7 @@ const SendMoney = () => {
 
   return (
     <div className="flex justify-center items-center h-screen bg-slate-100">
+      <Appbar />
       <div className="bg-white w-96 rounded-lg shadow-lg p-6">
         <h2 className="text-3xl font-bold text-center text-slate-800 mb-8">
           Send Money
