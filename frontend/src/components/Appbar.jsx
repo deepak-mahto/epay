@@ -34,7 +34,7 @@ const Appbar = () => {
             <>
               <Link
                 to="/signin"
-                className="text-slate-700 hover:text-blue-600 transition-colors duration-200"
+                className="border px-4 py-2 rounded-lg text-slate-700 hover:bg-blue-600 hover:text-white transition-colors duration-200"
               >
                 Sign In
               </Link>
