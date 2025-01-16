@@ -4,17 +4,34 @@ import Signin from "./pages/Signin";
 import Dashboard from "./pages/Dashboard";
 import SendMoney from "./pages/SendMoney";
 import LandingPage from "./pages/LandingPage";
+import useFetch from "./hooks/useFetch";
 
 function App() {
+  const { isLoggedIn } = useFetch();
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPage />}></Route>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/signin" element={<Signin />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/send" element={<SendMoney />} />
+          <Route
+            path="/"
+            element={isLoggedIn ? <Dashboard /> : <LandingPage />}
+          ></Route>
+          <Route
+            path="/signup"
+            element={isLoggedIn ? <Dashboard /> : <Signup />}
+          />
+          <Route
+            path="/signin"
+            element={isLoggedIn ? <Dashboard /> : <Signin />}
+          />
+          <Route
+            path="/dashboard"
+            element={isLoggedIn ? <Dashboard /> : <Signup />}
+          />
+          <Route
+            path="/send"
+            element={isLoggedIn ? <SendMoney /> : <Signup />}
+          />
         </Routes>
       </BrowserRouter>
     </>
