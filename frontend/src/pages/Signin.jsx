@@ -6,11 +6,12 @@ import Button from "../components/Button";
 import BottomWarning from "../components/BottomWarning";
 import axios from "axios";
 import Appbar from "../components/Appbar";
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate;
   return (
     <div className="bg-slate-100 h-screen flex justify-center items-center">
       <Appbar />
@@ -39,7 +40,7 @@ const Signin = () => {
                 }
               );
               localStorage.setItem("token", response.data.token);
-              window.location.href = "/dashboard";
+              navigate("/dashboard");
             }}
             label={"Sign in"}
           />

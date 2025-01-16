@@ -12,26 +12,11 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={isLoggedIn ? <Dashboard /> : <LandingPage />}
-          ></Route>
-          <Route
-            path="/signup"
-            element={isLoggedIn ? <Dashboard /> : <Signup />}
-          />
-          <Route
-            path="/signin"
-            element={isLoggedIn ? <Dashboard /> : <Signin />}
-          />
-          <Route
-            path="/dashboard"
-            element={isLoggedIn ? <Dashboard /> : <Signin />}
-          />
-          <Route
-            path="/send"
-            element={isLoggedIn ? <SendMoney /> : <Signin />}
-          />
+          <Route path="/" element={<LandingPage />}></Route>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/send" element={<SendMoney />} />
         </Routes>
       </BrowserRouter>
     </>
