@@ -6,13 +6,14 @@ import Button from "../components/Button";
 import BottomWarning from "../components/BottomWarning";
 import axios from "axios";
 import Appbar from "../components/Appbar";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   return (
     <div className="bg-slate-100 h-screen flex justify-center items-center">
       <Appbar />
@@ -52,7 +53,7 @@ const Signup = () => {
                 }
               );
               localStorage.setItem("token", response.data.token);
-              window.location.href = "/dashboard";
+              navigate("/dashboard");
             }}
             label={"Sign up"}
           />

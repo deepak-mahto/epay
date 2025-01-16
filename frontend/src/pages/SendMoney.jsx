@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Appbar from "../components/Appbar";
@@ -8,6 +8,7 @@ const SendMoney = () => {
   const id = searchParams.get("id");
   const name = searchParams.get("name");
   const [amount, setAmount] = useState(0);
+  const naviagte = useNavigate();
 
   return (
     <div>
@@ -55,6 +56,7 @@ const SendMoney = () => {
                     },
                   }
                 );
+                naviagte("/dashboard");
               }}
               className="w-full bg-blue-600 text-white py-2.5 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200"
             >

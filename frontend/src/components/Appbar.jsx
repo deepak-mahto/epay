@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 
 const Appbar = () => {
   const { userFirstName, isLoggedIn } = useFetch();
+  const navigate = useNavigate();
 
   return (
     <div className="shadow-md bg-white fixed w-full top-0 z-50">
@@ -23,7 +24,7 @@ const Appbar = () => {
               <button
                 onClick={() => {
                   localStorage.removeItem("token");
-                  window.location.href = "/signin";
+                  navigate("/signin");
                 }}
                 className="text-slate-700 hover:text-blue-600 transition-colors duration-200"
               >

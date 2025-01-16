@@ -29,7 +29,6 @@ const useFetch = () => {
       setUserBalance(response.data.balance);
       setUserFirstName(response.data.firstName);
     } catch (error) {
-      console.error("Error fetching user details:", error);
       setIsLoggedIn(false);
     }
   };
