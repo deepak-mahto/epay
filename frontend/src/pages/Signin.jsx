@@ -5,7 +5,6 @@ import InputBox from "../components/InputBox";
 import Button from "../components/Button";
 import BottomWarning from "../components/BottomWarning";
 import axios from "axios";
-import Appbar from "../components/Appbar";
 import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
@@ -14,7 +13,6 @@ const Signin = () => {
   const navigate = useNavigate;
   return (
     <div className="bg-slate-100 h-screen flex justify-center items-center">
-      <Appbar />
       <div className="rounded-lg bg-white w-96 text-center p-8 shadow-lg">
         <Heading label={"Sign in"} />
         <SubHeading label={"Enter your credentials to access your account"} />

@@ -1,13 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Appbar from "../components/Appbar";
 
 const LandingPage = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <div className="min-h-screen flex flex-col">
-      <Appbar />
       <div
         className="flex-1 flex items-center justify-center"
         style={{
@@ -38,12 +34,6 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-
-      <footer className="bg-slate-800 text-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-sm">&copy; {currentYear} ePay.</p>
-        </div>
-      </footer>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import Appbar from "../components/Appbar";
 
 const SendMoney = () => {
   const [searchParams] = useSearchParams();
@@ -12,7 +11,6 @@ const SendMoney = () => {
 
   return (
     <div>
-      <Appbar />
       <div className="flex justify-center items-center h-screen bg-slate-100">
         <div className="bg-white w-96 rounded-lg shadow-lg p-6">
           <h2 className="text-3xl font-bold text-center text-slate-800 mb-8">
