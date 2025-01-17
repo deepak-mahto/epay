@@ -14,7 +14,7 @@ const Appbar = () => {
         <div className="flex items-center space-x-4">
           {isLoggedIn ? (
             <>
-              <div className="text-slate-700">Hello, {userFirstName}</div>
+              <div className="text-slate-700">{userFirstName}</div>
               <div className="rounded-full h-10 w-10 bg-slate-200 flex items-center justify-center">
                 <div className="text-xl font-semibold text-slate-700">
                   {userFirstName[0]}
