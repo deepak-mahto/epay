@@ -1,6 +1,7 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import useFetch from "../hooks/useFetch";
 
 const SendMoney = () => {
   const [searchParams] = useSearchParams();
@@ -8,6 +9,7 @@ const SendMoney = () => {
   const name = searchParams.get("name");
   const [amount, setAmount] = useState(0);
   const naviagte = useNavigate();
+  const { isLoggedIn } = useFetch();
 
   return (
     <div>
@@ -43,7 +45,7 @@ const SendMoney = () => {
             <button
               onClick={() => {
                 axios.post(
-                  "https://epay-ou6w.onrender.com/api/v1/account/transfer",
+                  "http://localhost:3000/api/v1/account/transfer",
                   {
                     to: id,
                     amount,
@@ -54,7 +56,9 @@ const SendMoney = () => {
                     },
                   }
                 );
-                naviagte("/dashboard");
+                {
+                  isLoggedIn && naviagte("/dashboard");
+                }
               }}
               className="w-full bg-blue-600 text-white py-2.5 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200"
             >

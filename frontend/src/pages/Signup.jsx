@@ -44,7 +44,7 @@ const Signup = () => {
           <Button
             onClick={async () => {
               const response = await axios.post(
-                "https://epay-ou6w.onrender.com/api/v1/user/signup",
+                "http://localhost:3000/api/v1/user/signup",
                 {
                   firstName,
                   lastName,

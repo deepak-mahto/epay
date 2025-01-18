@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const Signin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   return (
     <div className="bg-slate-100 h-screen flex justify-center items-center">
       <div className="rounded-lg bg-white w-96 text-center p-8 shadow-lg">
@@ -31,7 +31,7 @@ const Signin = () => {
           <Button
             onClick={async () => {
               const response = await axios.post(
-                "https://epay-ou6w.onrender.com/api/v1/user/signin",
+                "http://localhost:3000/api/v1/user/signin",
                 {
                   username,
                   password,
