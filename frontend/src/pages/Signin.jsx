@@ -5,12 +5,10 @@ import InputBox from "../components/InputBox";
 import Button from "../components/Button";
 import BottomWarning from "../components/BottomWarning";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
   return (
     <div className="bg-slate-100 h-screen flex justify-center items-center">
       <div className="rounded-lg bg-white w-96 text-center p-8 shadow-lg">
@@ -38,7 +36,7 @@ const Signin = () => {
                 }
               );
               localStorage.setItem("token", response.data.token);
-              navigate("/dashboard");
+              window.location.href = "/dashboard";
             }}
             label={"Sign in"}
           />

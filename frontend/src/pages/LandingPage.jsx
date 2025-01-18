@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
 
 const LandingPage = () => {
+  const { isLoggedIn } = useFetch();
   return (
     <div className="min-h-screen flex flex-col">
       <div
@@ -18,20 +20,22 @@ const LandingPage = () => {
           <p className="text-xl mb-8">
             Send and receive money instantly with ePay.
           </p>
-          <div className="space-x-4">
-            <Link
-              to="/signup"
-              className="bg-white text-blue-600 px-6 py-3 rounded-lg text-lg font-medium hover:bg-blue-50 transition-colors duration-200"
-            >
-              Get Started
-            </Link>
-            <Link
-              to="/signin"
-              className="bg-transparent border border-white text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-white hover:text-blue-600 transition-colors duration-200"
-            >
-              Sign In
-            </Link>
-          </div>
+          {!isLoggedIn && (
+            <div className="space-x-4">
+              <Link
+                to="/signup"
+                className="bg-white text-blue-600 px-6 py-3 rounded-lg text-lg font-medium hover:bg-blue-50 transition-colors duration-200"
+              >
+                Get Started
+              </Link>
+              <Link
+                to="/signin"
+                className="bg-transparent border border-white text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-white hover:text-blue-600 transition-colors duration-200"
+              >
+                Sign In
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
