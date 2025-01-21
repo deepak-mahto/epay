@@ -1,9 +1,8 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
+import { useAuth } from "../AuthContext/AuthContext";
 
 const Appbar = () => {
-  const { userFirstName, isLoggedIn } = useFetch();
+  const { isAuthenticated, logout, userName } = useAuth();
 
   return (
     <div className="shadow-md bg-white fixed w-full top-0 z-50">
@@ -12,24 +11,21 @@ const Appbar = () => {
           ePay
         </Link>
         <div className="flex items-center space-x-4">
-          {isLoggedIn ? (
+          {isAuthenticated ? (
             <>
               <Link to="/dashboard">
-                <div className="text-slate-700">{userFirstName}</div>
+                <div className="text-slate-700">{userName}</div>
               </Link>
               <Link to="/dashboard">
                 <div className="rounded-full h-10 w-10 bg-slate-200 flex items-center justify-center">
                   <div className="text-xl font-semibold text-slate-700">
-                    {userFirstName[0]}
+                    {userName[0]}
                   </div>
                 </div>
               </Link>
 
               <button
-                onClick={() => {
-                  localStorage.removeItem("token");
-                  window.location.href = "/signin";
-                }}
+                onClick={() => logout()}
                 className="text-slate-700 hover:text-blue-600 transition-colors duration-200"
               >
                 Logout

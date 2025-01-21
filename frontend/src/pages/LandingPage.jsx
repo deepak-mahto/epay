@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
+import { useAuth } from "../AuthContext/AuthContext";
 
 const LandingPage = () => {
-  const { isLoggedIn } = useFetch();
+  const { isAuthenticated } = useAuth();
   return (
     <div className="min-h-screen flex flex-col">
       <div
@@ -20,7 +20,7 @@ const LandingPage = () => {
           <p className="text-xl mb-8">
             Send and receive money instantly with ePay.
           </p>
-          {!isLoggedIn && (
+          {!isAuthenticated && (
             <div className="space-x-4">
               <Link
                 to="/signup"

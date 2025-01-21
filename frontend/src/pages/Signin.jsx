@@ -5,10 +5,12 @@ import InputBox from "../components/InputBox";
 import Button from "../components/Button";
 import BottomWarning from "../components/BottomWarning";
 import axios from "axios";
+import { useAuth } from "../AuthContext/AuthContext";
 
 const Signin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { signin } = useAuth();
   return (
     <div className="bg-slate-100 h-screen flex justify-center items-center">
       <div className="rounded-lg bg-white w-96 text-center p-8 shadow-lg">
@@ -36,7 +38,7 @@ const Signin = () => {
                 }
               );
               localStorage.setItem("token", response.data.token);
-              window.location.href = "/dashboard";
+              signin();
             }}
             label={"Sign in"}
           />

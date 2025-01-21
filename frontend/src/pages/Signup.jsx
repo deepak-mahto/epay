@@ -5,12 +5,14 @@ import InputBox from "../components/InputBox";
 import Button from "../components/Button";
 import BottomWarning from "../components/BottomWarning";
 import axios from "axios";
+import { useAuth } from "../AuthContext/AuthContext";
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { signup } = useAuth();
 
   return (
     <div className="bg-slate-100 h-screen flex justify-center items-center">
@@ -19,12 +21,12 @@ const Signup = () => {
         <SubHeading label={"Enter your information to create an account"} />
         <InputBox
           onChange={(e) => setFirstName(e.target.value)}
-          placeholder={"John"}
+          placeholder={"Deepak"}
           label={"First Name"}
         />
         <InputBox
           onChange={(e) => setLastName(e.target.value)}
-          placeholder={"Doe"}
+          placeholder={"Kumar"}
           label={"Last Name"}
         />
         <InputBox
@@ -51,7 +53,7 @@ const Signup = () => {
                 }
               );
               localStorage.setItem("token", response.data.token);
-              window.location.href = "/dashboard";
+              signup();
             }}
             label={"Sign up"}
           />

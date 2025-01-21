@@ -1,9 +1,24 @@
+import { useEffect, useState } from "react";
 import Balance from "../components/Balance";
 import Users from "../components/Users";
-import useFetch from "../hooks/useFetch";
+import axios from "axios";
 
 const Dashboard = () => {
-  const { userBalance } = useFetch();
+  const [userBalance, setUserBalance] = useState("");
+  useEffect(() => {
+    const getBalance = async () => {
+      const response = await axios.get(
+        "http://localhost:3000/api/v1/account/balance",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      setUserBalance(response.data.balance);
+    };
+    getBalance();
+  }, []);
 
   return (
     <div>
